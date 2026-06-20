@@ -1,0 +1,451 @@
+/* =========================================
+   1. VARIABLES Y RESET (Modelo de Caja)
+   ========================================= */
+:root {
+    --primary-pink: #e91e63;       /* Rosa fuerte para acentos */
+    --light-pink: #fce4ec;         /* Rosa muy claro para fondos */
+    --dark-pink: #880e4f;          /* Rosa oscuro para textos */
+    --bg-color: #fff0f5;           /* Fondo general (Lavender Blush) */
+    --text-color: #4a4a4a;         /* Gris oscuro para lectura */
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-top: 80px; /* Para compensar el navbar fijo */
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* =========================================
+   2. TIPOGRAFÍA Y ESTRUCTURA GENERAL
+   ========================================= */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2 {
+    color: var(--dark-pink);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+h1 { font-size: 2.5rem; margin-bottom: 5px; }
+h2 { font-size: 1.8rem; }
+h2 i { margin-right: 10px; color: var(--primary-pink); }
+
+.subtitle {
+    text-align: center;
+    color: var(--primary-pink);
+    font-weight: 600;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+p { margin-bottom: 15px; text-align: justify; }
+.section-intro { text-align: center; margin-bottom: 25px; font-style: italic; }
+
+/* =========================================
+   NAVBAR (Limpio y Sticky)
+   ========================================= */
+.navbar {
+    background-color: var(--white);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(233, 30, 99, 0.08);
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,.95);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark-pink);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--primary-pink);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-pink);
+}
+
+/* Elementos ocultos para el menú hamburguesa en escritorio */
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--dark-pink);
+    cursor: pointer;
+}
+
+/* =========================================
+   HERO SECTION (Simple y centrado)
+   ========================================= */
+.hero {
+    background-color: var(--bg-color); /* Fondo simple, sin formas raras */
+    padding: 40px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: var(--dark-pink);
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--primary-pink);
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   RESPONSIVE: MENÚ HAMBURGUESA (CSS PURO)
+   ========================================= */
+@media (max-width: 768px) {
+
+    .nav-container{
+        position: relative;
+    }
+
+    .nav-toggle-label{
+        display:block;
+        font-size:1.8rem;
+        cursor:pointer;
+    }
+
+    .nav-menu{
+        position:absolute;
+        top:60px;
+        right:0;
+        width:220px;
+        background:white;
+        border-radius:15px;
+        box-shadow:0 10px 30px rgba(0,0,0,.15);
+        padding:20px;
+        list-style:none;
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+        opacity:0;
+        visibility:hidden;
+        transform:translateY(-10px);
+        transition:.3s ease;
+    }
+
+    .nav-menu li{
+        text-align:left;
+    }
+
+    .nav-menu a{
+        display:block;
+        padding:8px;
+    }
+
+    .nav-toggle:checked ~ .nav-menu{
+        opacity:1;
+        visibility:visible;
+        transform:translateY(0);
+    }
+
+    .hero h1{
+        font-size:2.2rem;
+    }
+
+    .hero .subtitle{
+        font-size:1.1rem;
+    }
+}
+
+/* =========================================
+   3. SECCIONES Y TARJETAS (Box Model)
+   ========================================= */
+.card-section {
+    background-color: var(--white);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.08);
+    border-left: 5px solid var(--primary-pink);
+
+    transition: all 0.3s ease;
+}
+
+.card-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.15);
+}
+
+/* =========================================
+   SECCIÓN INTERESES (Flexbox en lista UL)
+   ========================================= */
+.interest-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas bajen de línea */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    gap: 25px; /* Espacio uniforme entre tarjetas */
+    list-style: none; /* Quita los puntos de la lista por defecto */
+    padding: 20px 0;
+    margin: 0;
+}
+
+.interest-card {
+    background-color: var(--white);
+    border: 2px solid var(--light-pink);
+    border-radius: 15px;
+    padding: 25px 20px;
+    text-align: center;
+    flex: 1 1 180px; /* Crece, se encoge, base de 180px */
+    max-width: 220px;
+    transition: all 0.3s ease; /* Suaviza la animación */
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.interest-card i {
+    font-size: 2.5rem;
+    color: var(--primary-pink);
+    transition: color 0.3s ease;
+}
+
+.interest-card span {
+    font-weight: 600;
+    color: var(--dark-pink);
+    font-size: 1.1rem;
+}
+
+/* EFECTO HOVER COOL PARA INTERESES */
+.interest-card:hover {
+    transform: translateY(-8px); /* Se eleva */
+    background-color: var(--primary-pink);
+    border-color: var(--primary-pink);
+    box-shadow: 0 15px 30px rgba(233, 30, 99, 0.3);
+}
+
+.interest-card:hover i,
+.interest-card:hover span {
+    color: var(--white); /* El texto e icono se vuelven blancos */
+}
+
+/* =========================================
+   SECCIÓN CERTIFICACIONES
+   ========================================= */
+.cert-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.cert-card {
+    background-color: var(--white);
+    border: 2px solid var(--light-pink);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    flex: 1 1 250px;
+    max-width: 300px;
+    transition: all 0.3s ease;
+}
+
+.cert-badge {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.cert-card h3 {
+    color: var(--dark-pink);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.cert-card p {
+    color: var(--primary-pink);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.cert-level {
+    display: inline-block;
+    background-color: var(--light-pink);
+    color: var(--dark-pink);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.cert-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(233, 30, 99, 0.25);
+    border-color: var(--primary-pink);
+}
+
+/* Responsive para certificaciones */
+@media (max-width: 768px) {
+    .cert-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+/* =========================================
+   ACTUALIZACIÓN MEDIA QUERY (Responsive)
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* En móviles, las tarjetas de intereses ocupan todo el ancho */
+    .interest-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+/* =========================================
+   5. LISTA DE HABILIDADES
+   ========================================= */
+.lista-habilidades {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.lista-habilidades li {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+.lista-habilidades li i {
+    color: var(--primary-pink);
+    margin-right: 10px;
+}
+
+/* =========================================
+   6. FORMULARIO
+   ========================================= */
+.contact-form { max-width: 600px; margin: 0 auto; }
+.form-group { margin-bottom: 20px; }
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-pink);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--light-pink);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+}
+
+.btn-enviar {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-pink);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar:hover { background-color: var(--dark-pink); }
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--dark-pink);
+    color: var(--white);
+    margin-top: 40px;
+    width: 100%; /* Asegura que el footer ocupe todo el ancho */
+}
+
+footer p {
+    margin: 0; /* Elimina márgenes que puedan desalinearlo */
+    text-align: center;
+}
+
+/* =========================================
+   8. DISEÑO RESPONSIVE (Media Queries)
+   ========================================= */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    .card-section { padding: 20px; }
+    
+    /* En móviles, las tarjetas ocupan todo el ancho disponible */
+    .tech-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+

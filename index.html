@@ -4,82 +4,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Personal</title>
+  <title>Portafolio Personal - Paula Distefano</title>
+  <!-- Fuente moderna de Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Librería de Iconos FontAwesome (Gratis) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Archivo CSS externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <header>
-    <h1>Portafolio Personal</h1>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="#" class="logo">PD<span>.</span></a>
+
+        <!-- Checkbox oculto para el menú hamburguesa (Truco CSS puro) -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+          <i class="fas fa-bars"></i>
+        </label>
+
+        <ul class="nav-menu">
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#intereses">Intereses</a></li>
+          <li><a href="#certificaciones">Certificaciones</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Sección principal simplificada -->
+    <div class="hero">
+      <div class="container hero-content">
+        <h1>Paula Distefano</h1>
+        <p class="subtitle">Desarrolladora de Software</p>
+      </div>
+    </div>
   </header>
 
-  <main>
-
-    <section>
-      <h2>Sobre mí</h2>
-
-      <p>
-        Mi nombre es Paula Distefano y soy estudiante de la
-        Tecnicatura en Desarrollo de Software en el Instituto Tecnológico Universitario.
-      </p>
-
-      <p>
-        Me apasiona la tecnología, por lo que, además de estar estudiando, he realizado algunos cursos relacionados
-        y actualmente estoy realizando una capacitación en Desarrollo de Software orientado a la salud.
-      </p>
+  <main class="container">
+    <!-- Sección Sobre Mí -->
+    <section id="sobre-mi" class="card-section">
+      <h2><i class="fas fa-user-circle"></i> Sobre mí</h2>
+      <p>Mi nombre es Paula Distefano y soy estudiante de la Tecnicatura en Desarrollo de Software en el Instituto
+        Tecnológico Universitario.</p>
+      <p>Me apasiona la tecnología, por lo que, además de estar estudiando, he completado algunos cursos relacionados a
+        la programación y
+        actualmente estoy realizando una capacitación en Desarrollo de Software orientado a la salud.</p>
     </section>
 
-    <section>
-      <h2>Intereses</h2>
+    <!-- Sección Intereses (Aplicación de Flexbox + Imagen Responsive) -->
+    <section id="intereses" class="card-section">
+      <h2><i class="fas fa-heart"></i> Intereses</h2>
+      <p class="section-intro">Áreas que me apasionan y en las que busco profundizar mis conocimientos:</p>
 
-      <ul>
-        <li>Desarrollo Web</li>
-        <li>Bases de Datos</li>
-        <li>Computación en la Nube</li>
-        <li>Git y GitHub</li>
+      <!-- La lista UL actúa como contenedor Flexbox -->
+      <ul class="interest-container">
+        <li class="interest-card">
+          <i class="fas fa-globe"></i>
+          <span>Desarrollo Web</span>
+        </li>
+        <li class="interest-card">
+          <i class="fas fa-database"></i>
+          <span>Bases de Datos</span>
+        </li>
+        <li class="interest-card">
+          <i class="fas fa-cloud"></i>
+          <span>Computación en la Nube</span>
+        </li>
+        <li class="interest-card">
+          <i class="fab fa-github"></i>
+          <span>Git y GitHub</span>
+        </li>
       </ul>
-      <img src="img/programacion.jpg" alt="Imagen relacionada con programación y desarrollo de software" width="500">
     </section>
 
-    <section>
-      <h2>Habilidades</h2>
+    <!-- Sección Certificaciones -->
+    <section id="certificaciones" class="card-section">
+      <h2><i class="fas fa-certificate"></i> Certificaciones</h2>
+      <p class="section-intro">Cursos que completé para fortalecer mis conocimientos:</p>
 
-      <ul>
-        <li>Resolución de problemas tecnológicos</li>
-        <li>Trabajo en equipo</li>
-        <li>Organización y gestión del tiempo</li>
+      <div class="cert-container">
+        <!-- Cisco Python 1 -->
+        <div class="cert-card">
+          <img src="img/cisco-python1.png" alt="Cisco Python Essentials 1" class="cert-badge">
+          <h3>Python Essentials 1</h3>
+          <p>Cisco Networking Academy</p>
+          <span class="cert-level">Nivel Inicial</span>
+        </div>
+
+        <!-- Cisco Python 2 -->
+        <div class="cert-card">
+          <img src="img/cisco-python2.png" alt="Cisco Python Essentials 2" class="cert-badge">
+          <h3>Python Essentials 2</h3>
+          <p>Cisco Networking Academy</p>
+          <span class="cert-level">Nivel Intermedio</span>
+        </div>
+
+        <!-- AWS Cloud -->
+        <div class="cert-card">
+          <img src="img/aws-cloud.png" alt="AWS Cloud Foundations" class="cert-badge">
+          <h3>Cloud Foundations</h3>
+          <p>AWS Academy</p>
+          <span class="cert-level">Cloud Computing</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Habilidades Blandas -->
+    <section id="habilidades" class="card-section">
+      <h2><i class="fas fa-star"></i> Habilidades</h2>
+      <ul class="lista-habilidades">
+        <li><i class="fas fa-check-circle"></i> Resolución de problemas tecnológicos</li>
+        <li><i class="fas fa-check-circle"></i> Trabajo en equipo</li>
+        <li><i class="fas fa-check-circle"></i> Organización y gestión del tiempo</li>
       </ul>
     </section>
 
-    <section>
-      <h2>Formulario de contacto</h2>
-
-      <form action="#" method="get">
-
-        <p>
-          <label for="nombre">Nombre:</label><br>
-          <input type="text" id="nombre" name="nombre" required>
-        </p>
-
-        <p>
-          <label for="correo">Correo electrónico:</label><br>
-          <input type="email" id="correo" name="correo" required>
-        </p>
-
-        <p>
-          <label for="mensaje">Mensaje:</label><br>
-          <textarea id="mensaje" name="mensaje" rows="5" cols="40" required></textarea>
-        </p>
-
-        <button type="submit">Enviar</button>
-
+    <!-- Sección Formulario de Contacto -->
+    <section id="contacto" class="card-section">
+      <h2><i class="fas fa-envelope"></i> Formulario de contacto</h2>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje:</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
+        </div>
+        <button type="submit" class="btn-enviar">Enviar Mensaje</button>
       </form>
     </section>
-
   </main>
 
   <footer>
-    <p>© 2026 - Paula Distefano</p>
+    <p>© 2026 - Paula Distefano | Portafolio Personal</p>
   </footer>
 
 </body>
